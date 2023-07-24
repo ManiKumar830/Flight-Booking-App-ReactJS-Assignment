@@ -48,6 +48,19 @@ class Bookings extends Component {
 
   onAddBooking = event => {
     event.preventDefault()
+
+    const url = "https://api.flightapi.io/schedule/64be267fbcfb5fb809d45699?mode=departures&iata=DOH"
+
+    const options = {
+        method: "GET"
+    }
+    
+    const response = await fetch(url, options)
+    const fetchedData = await response.json()
+
+    console.log(fetchedData)
+
+    
     const {titleInput, dateInput, toInput} = this.state
     const formattedDate = dateInput
       ? format(new Date(dateInput), 'dd MMMM yyyy, EEEE')
